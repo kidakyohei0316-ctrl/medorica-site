@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>お問い合わせ｜メドリカ（Medorica）クリニック事務長代行</title>
-  <meta name="description" content="メドリカ（Medorica）へのお問い合わせ。クリニックの事務長代行・業務改善・IT／AI活用についてのご相談は、フォームまたはメールでお気軽にご連絡ください。">
+  <meta name="description" content="メドリカ（Medorica）へのお問い合わせ。定期支援、モニター、査定・返戻診断、データ提出加算などのご相談は、フォームまたはメール（info@medorica.jp）でご連絡ください。返信は2営業日以内です。">
   <link rel="canonical" href="https://medorica.jp/contact.html">
   <link rel="icon" type="image/png" href="images/medorica_icon.png">
   <link rel="apple-touch-icon" href="images/medorica_icon.png">
@@ -39,46 +39,45 @@
   <section class="page-hero">
     <div class="container">
       <h1>お問い合わせ</h1>
-      <p>ご相談・ご質問は、下記フォームまたはメールでお気軽にご連絡ください。（仮文）</p>
+      <p>ご相談・ご質問は、下記フォームまたはメールでお気軽にご連絡ください。</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <!-- 送信先は未設定です。フォームサービス（Formspree / Googleフォーム等）のURLを action に設定してください -->
-      <form class="form" action="#" method="post">
-        <div>
-          <label for="clinic">クリニック名<span class="req">必須</span></label>
-          <input id="clinic" name="clinic" type="text" required autocomplete="organization">
-        </div>
+      <!-- Formspree のフォームIDを取得したら、action の 【FORM_ID】 を置き換えてください -->
+      <form class="form" action="https://formspree.io/f/【FORM_ID】" method="POST">
+        <input type="hidden" name="_subject" value="メドリカ公式サイトからのお問い合わせ">
         <div>
           <label for="name">お名前<span class="req">必須</span></label>
           <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div>
+          <label for="clinic">医院名<span class="req">必須</span></label>
+          <input id="clinic" name="clinic" type="text" required autocomplete="organization">
         </div>
         <div>
           <label for="email">メールアドレス<span class="req">必須</span></label>
           <input id="email" name="email" type="email" required autocomplete="email">
         </div>
         <div>
-          <label for="tel">電話番号</label>
-          <input id="tel" name="tel" type="tel" autocomplete="tel">
-        </div>
-        <div>
-          <label for="topic">ご相談内容</label>
-          <select id="topic" name="topic">
-            <option>事務長代行全般</option>
-            <option>スタッフ運営・労務</option>
-            <option>レセプト・請求業務</option>
-            <option>業務改善・IT／AI活用</option>
+          <label for="topic">ご相談内容<span class="req">必須</span></label>
+          <select id="topic" name="topic" required>
+            <option value="">選択してください</option>
+            <option>定期支援</option>
+            <option>モニター</option>
+            <option>査定・返戻診断</option>
+            <option>データ提出加算</option>
             <option>その他</option>
           </select>
         </div>
         <div>
-          <label for="message">お問い合わせ内容<span class="req">必須</span></label>
+          <label for="message">本文<span class="req">必須</span></label>
           <textarea id="message" name="message" required></textarea>
         </div>
         <button class="btn btn-primary" type="submit">送信する</button>
       </form>
+      <p class="note" style="margin-top:12px">メールは24時間受け付けています。返信は2営業日以内にお送りします。</p>
     </div>
   </section>
 
@@ -90,10 +89,10 @@
       </div>
       <table class="table">
         <tr><th>屋号</th><td>メドリカ（Medorica）</td></tr>
-        <tr><th>代表者</th><td>【要入力】</td></tr>
-        <tr><th>メールアドレス</th><td>【要入力】</td></tr>
-        <tr><th>電話番号</th><td>【要入力】</td></tr>
-        <tr><th>受付時間</th><td>【要入力】</td></tr>
+        <tr><th>代表者</th><td>貴田 恭平（きだ きょうへい）<br>電子カルテメーカー出身の現役クリニック事務長</td></tr>
+        <tr><th>メールアドレス</th><td><a href="mailto:info@medorica.jp">info@medorica.jp</a></td></tr>
+        <tr><th>FAX</th><td>06-7655-9350</td></tr>
+        <tr><th>受付</th><td>メールは24時間受付／返信は2営業日以内</td></tr>
       </table>
       <p class="note" style="margin-top:12px">対応エリアの目安：大阪・兵庫・奈良（オンラインでのご相談はエリアを問わずお受けしています）</p>
     </div>
@@ -106,6 +105,11 @@
       <div>
         <img src="images/medorica_logo_A_transparent.png" alt="メドリカ（Medorica）｜Medical Recover" width="160" height="47">
         <p>クリニック事務長代行</p>
+      </div>
+      <div class="footer-contact">
+        <p>代表：貴田 恭平（きだ きょうへい）<br>電子カルテメーカー出身の現役クリニック事務長</p>
+        <p>メール：<a href="mailto:info@medorica.jp">info@medorica.jp</a><br>FAX：06-7655-9350</p>
+        <p>メールは24時間受付／返信は2営業日以内</p>
       </div>
       <ul>
         <li><a href="index.html">トップ</a></li>
