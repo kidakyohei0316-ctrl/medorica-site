@@ -440,13 +440,38 @@ p  { margin: 0 0 1em; }
    トップページ（body.home）専用
    ========================================================== */
 
+/* ---------- ヘッダー（トップだけ透明にして濃紺に重ねる） ---------- */
+.site-header--overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.site-header--overlay .container { min-height: 84px; }
+.site-header--overlay .global-nav a { color: rgba(255, 255, 255, 0.86); }
+.site-header--overlay .global-nav a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.site-header--overlay .global-nav a[aria-current="page"] { color: var(--mint); }
+.site-header--overlay .global-nav .nav-cta a { color: #fff; }
+.site-header--overlay .global-nav .nav-cta a:hover { background: #fff; color: var(--navy); }
+.site-header--overlay .nav-toggle { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+@media (max-width: 860px) {
+  .site-header--overlay .container { min-height: 72px; }
+  /* 開いたメニューは白背景のままなので文字は紺に戻す */
+  .site-header--overlay .global-nav a { color: var(--navy); }
+  .site-header--overlay .global-nav a:hover { background: var(--tint-teal); color: var(--teal); }
+  .site-header--overlay .global-nav a[aria-current="page"] { color: var(--teal); }
+  .site-header--overlay .global-nav .nav-cta a { color: #fff; }
+}
+
 /* ---------- ファーストビュー ---------- */
 .home .hero {
   position: relative;
   overflow: hidden;
   background: radial-gradient(1200px 600px at 85% 20%, var(--navy-light) 0%, var(--navy) 45%, var(--deep) 100%);
   color: #fff;
-  padding: 120px 0 140px;
+  padding: 200px 0 140px;
 }
 .home .hero::after {
   content: "";
@@ -480,6 +505,11 @@ p  { margin: 0 0 1em; }
   margin-bottom: 0;
 }
 .home .hero h1 em { font-style: normal; color: var(--mint); white-space: nowrap; }
+.home .hero h1 .nowrap-pc { white-space: nowrap; }
+@media (max-width: 600px) {
+  .home .hero h1 .br-pc { display: none; }
+  .home .hero h1 .nowrap-pc { white-space: normal; }
+}
 .home .hero .lead,
 .home .hero .sub,
 .home .concerns li,
@@ -622,7 +652,7 @@ p  { margin: 0 0 1em; }
   .home .flow { grid-template-columns: 1fr 1fr; row-gap: 32px; }
 }
 @media (max-width: 860px) {
-  .home .hero { padding: 72px 0 112px; }
+  .home .hero { padding: 136px 0 112px; }
   .home .hero::after { width: 320px; height: 320px; border-width: 28px; right: -140px; top: 24px; }
   .home .stats { margin-top: -48px; }
   .home .stat { padding: 24px 24px; }
