@@ -15,8 +15,8 @@
 
 ## ページ
 
-- [トップ](https://example.com/index.html): サービスの概要と相談の流れ
-- [サービス内容](https://example.com/services.html): 支援内容の詳細、契約の形、契約までの流れ
-- [代表者プロフィール](https://example.com/about.html): 代表者の経歴と大切にしていること
-- [よくあるご質問](https://example.com/faq.html): 依頼できる業務、頻度、料金、診療科、契約期間
-- [お問い合わせ](https://example.com/contact.html): 問い合わせフォームと連絡先
+- [トップ](https://medorica.jp/index.html): サービスの概要と相談の流れ
+- [サービス内容](https://medorica.jp/services.html): 支援内容の詳細、契約の形、契約までの流れ
+- [代表者プロフィール](https://medorica.jp/about.html): 代表者の経歴と大切にしていること
+- [よくあるご質問](https://medorica.jp/faq.html): 依頼できる業務、頻度、料金、診療科、契約期間
+- [お問い合わせ](https://medorica.jp/contact.html): 問い合わせフォームと連絡先
