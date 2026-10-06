@@ -374,29 +374,97 @@ p  { margin: 0 0 1em; }
 
 /* ---------- 定期支援（主役のプラン） ---------- */
 .plan-lead { max-width: 44em; font-size: 1.0625rem; margin: -16px 0 40px; text-wrap: pretty; }
-.plan-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.plan-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 40px 36px;
+@media (max-width: 760px) {
+  .plan-lead { margin: -8px 0 28px; }
 }
-.plan-card--accent { border: 2px solid var(--teal); }
-.plan-name { margin: 0 0 4px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; }
-.plan-price {
-  margin: 0 0 20px;
-  font-size: clamp(2.5rem, 5vw, 3.25rem);
+
+/* ---------- 定期支援の3プラン比較表 ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.plan-table-wrap { padding-top: 14px; }
+.plan-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  font-size: 0.95rem;
+}
+.plan-table th,
+.plan-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  vertical-align: middle;
+}
+.plan-table tbody th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--navy);
+  width: 34%;
+}
+.plan-table thead th {
+  position: relative;
+  padding-top: 22px;
+  font-size: 1.05rem;
+  color: var(--navy);
+  border-bottom: 2px solid var(--navy);
+  letter-spacing: 0.05em;
+}
+.plan-table .row-price td {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 700;
   line-height: 1.2;
   color: var(--navy);
+  white-space: nowrap;
 }
-.plan-unit { font-size: 1rem; margin-right: 8px; color: var(--muted); font-weight: 700; }
-.plan-card .check-list li:first-child,
-.plan-card .check-list li:nth-child(2) { font-weight: 700; color: var(--navy); }
+.plan-table .is-featured { background: var(--tint-teal); }
+.plan-table thead .is-featured {
+  border-top: 3px solid var(--teal);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.plan-badge {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 6px;
+  padding: 1px 12px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.plan-badge--sub { margin: 6px auto 0; background: var(--navy); }
+.plan-table .yes { color: var(--teal); font-weight: 700; font-size: 1.15rem; }
+.plan-table .no { color: #b3bcc8; }
+.cell-note { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); }
+.plan-scroll-hint { display: none; margin: 8px 0 0; }
 @media (max-width: 760px) {
-  .plan-cards { grid-template-columns: 1fr; gap: 16px; }
-  .plan-card { padding: 28px 22px; }
-  .plan-lead { margin: -8px 0 28px; }
+  .plan-table { min-width: 430px; table-layout: fixed; font-size: 0.8rem; }
+  .plan-table th,
+  .plan-table td { padding: 12px 8px; }
+  .plan-table thead th { font-size: 0.85rem; letter-spacing: 0; }
+  .plan-table .row-price td { font-size: 1.25rem; }
+  /* 左の項目列は固定して、プラン列だけ横にスクロールさせる */
+  .plan-table tbody th,
+  .plan-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 112px;
+    background: #fff;
+    box-shadow: 1px 0 0 var(--line);
+  }
+  .plan-scroll-hint { display: block; }
 }
 
 /* ---------- 入口（査定・返戻診断） ---------- */
