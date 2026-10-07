@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://medorica.jp/services.html">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261007">
+  <link rel="stylesheet" href="style.css?v=20261007b">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <section class="section" id="price">
+  <section class="section reveal" id="price">
     <div class="container">
       <div class="section-head">
         <span class="label">MAIN PLAN</span>
@@ -150,7 +150,7 @@
     </div>
   </section>
 
-  <section class="section section-tint">
+  <section class="section section-tint reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">START</span>
@@ -167,7 +167,7 @@
     </div>
   </section>
 
-  <section class="section section-compact">
+  <section class="section section-compact reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">FOUNDATION</span>
@@ -209,7 +209,7 @@
     </div>
   </section>
 
-  <section class="section section-tint">
+  <section class="section section-tint reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">FLOW</span>
@@ -224,7 +224,7 @@
     </div>
   </section>
 
-  <section class="cta-band">
+  <section class="cta-band reveal">
     <div class="container">
       <span class="label">CONTACT</span>
       <h2>どの支援が合うか、一緒に整理しましょう</h2>
@@ -266,6 +266,20 @@
       var open = nav.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
+    // スクロールで表示されたセクションにクラスを付けるだけ（文字は差し込まない）
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js-reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   })();
 </script>
 </body>

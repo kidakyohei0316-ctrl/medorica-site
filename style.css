@@ -15,6 +15,10 @@
   --deep: color-mix(in srgb, var(--navy) 62%, #000);
   --navy-light: color-mix(in srgb, var(--navy) 72%, #3d86d6);
   --mint: color-mix(in srgb, var(--teal) 55%, #fff);
+  --teal-bright: color-mix(in srgb, var(--teal) 86%, #fff);
+  /* カードの影とホバー */
+  --shadow-card: 0 1px 2px color-mix(in srgb, var(--navy) 6%, transparent);
+  --shadow-hover: 0 16px 36px color-mix(in srgb, var(--navy) 14%, transparent);
   --on-navy: rgba(255, 255, 255, 0.8);
   --radius: 12px;
   --radius-lg: 20px;
@@ -163,15 +167,20 @@ p  { margin: 0 0 1em; }
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.btn:hover { transform: translateY(-2px); }
+.btn:hover { transform: translateY(-3px); }
 .btn-primary {
   background: var(--teal);
   color: #fff;
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--teal) 35%, transparent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--teal) 30%, transparent);
 }
-.btn-primary:hover { background: var(--navy); color: #fff; }
+/* CTAボタンはホバーでティールを少し明るく */
+.btn-primary:hover {
+  background: var(--teal-bright);
+  color: #fff;
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--teal) 45%, transparent);
+}
 .btn-outline { border: 2px solid var(--navy); color: var(--navy); }
 .btn-outline:hover { background: var(--navy); color: #fff; }
 .btn-ghost { border: 1px solid rgba(255, 255, 255, 0.45); color: #fff; }
@@ -252,7 +261,24 @@ p  { margin: 0 0 1em; }
   padding: 28px 24px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.card:hover { box-shadow: 0 10px 28px rgba(18, 52, 96, 0.08); transform: translateY(-2px); }
+/* カード類のホバー：2〜4px 浮いて影が少し濃くなる（0.2秒） */
+.card,
+.home .problem,
+.home .route-step,
+.home .case,
+.home .num-card,
+.plan-table-wrap,
+.start-box {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover,
+.home .problem:hover,
+.home .route-step:hover,
+.home .case:hover,
+.home .num-card:hover,
+.plan-table-wrap:hover,
+.start-box:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
 .card p:last-child { margin-bottom: 0; }
 
 .num {
@@ -390,7 +416,12 @@ p  { margin: 0 0 1em; }
   white-space: nowrap;
   border: 0;
 }
-.plan-table-wrap { padding-top: 14px; }
+.plan-table-wrap {
+  padding: 14px 24px 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
 .plan-table {
   width: 100%;
   min-width: 640px;
@@ -449,6 +480,7 @@ p  { margin: 0 0 1em; }
 .cell-note { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); }
 .plan-scroll-hint { display: none; margin: 8px 0 0; }
 @media (max-width: 760px) {
+  .plan-table-wrap { padding: 8px 8px 4px; }
   .plan-table { min-width: 430px; table-layout: fixed; font-size: 0.8rem; }
   .plan-table th,
   .plan-table td { padding: 12px 8px; }
@@ -644,22 +676,57 @@ p  { margin: 0 0 1em; }
 .home .hero {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(1200px 600px at 85% 20%, var(--navy-light) 0%, var(--navy) 45%, var(--deep) 100%);
+  /* 濃紺から、わずかに明るい濃紺へのごく薄いグラデーション */
+  background: linear-gradient(160deg, var(--navy) 0%, color-mix(in srgb, var(--navy) 88%, #fff) 100%);
   color: #fff;
-  padding: 220px 0 160px;
+  padding: 200px 0 140px;
 }
+/* 右下にティールの柔らかいぼかしを1つ */
 .home .hero::after {
   content: "";
   position: absolute;
-  right: -120px;
-  top: 60px;
-  width: 560px;
-  height: 560px;
+  right: -160px;
+  bottom: -220px;
+  width: 640px;
+  height: 640px;
   border-radius: 50%;
-  border: 46px solid color-mix(in srgb, var(--mint) 14%, transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--teal) 28%, transparent), transparent);
   pointer-events: none;
 }
 .home .hero .container { position: relative; z-index: 1; }
+.home .hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 56px;
+  align-items: center;
+}
+.home .hero h1 .accent { color: var(--teal); }
+
+/* 画像の枠（画像がない間は同じ比率の枠に仮表示） */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.img-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-placeholder { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; }
+.home .hero-visual { margin: 0; }
+.img-frame--report {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--deep) 50%, transparent);
+  color: var(--on-navy);
+}
+.img-frame--report img { background: #fff; }
 .home .hero .eyebrow {
   display: inline-block;
   font-size: 0.8rem;
@@ -673,7 +740,7 @@ p  { margin: 0 0 1em; }
 }
 .home .hero h1 {
   color: #fff;
-  font-size: clamp(2.25rem, 6.4vw, 4rem);
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
   line-height: 1.3;
   letter-spacing: 0.04em;
   margin-bottom: 0;
@@ -700,12 +767,51 @@ p  { margin: 0 0 1em; }
 .home .hero .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 48px; }
 
 /* ---------- PROBLEM ---------- */
-.home .problem-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+/* ---------- NUMBERS（Bento：大1枚＋小2枚） ---------- */
+.home .section-numbers { padding-bottom: calc(var(--section-y) * 0.75); }
+.home .bento {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+}
+.home .num-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.home .num-card--lg {
+  grid-row: span 2;
+  background: var(--tint-navy);
+  padding: 48px 44px 40px;
+}
+.home .num-value {
+  margin: 0;
+  font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+}
+.home .num-card--lg .num-value { font-size: clamp(3.5rem, 8vw, 6rem); }
+.home .num-value span { font-size: 0.36em; margin-left: 6px; font-weight: 700; }
+.home .num-value--range { font-size: clamp(1.75rem, 3.4vw, 2.5rem); }
+.home .num-value .num-arrow { font-size: 0.7em; margin: 0 8px; color: var(--teal); }
+.home .num-text { margin: 12px 0 0; color: var(--muted); font-size: 0.95rem; text-wrap: pretty; }
+.home .num-card--lg .num-text { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+
+/* ---------- PROBLEM ---------- */
+.home .problem-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .home .problem {
   margin: 0;
   padding: 36px 32px;
   border: 1px solid var(--line);
   border-left: 4px solid var(--navy);
+  background: #fff;
   border-radius: var(--radius);
   font-size: 1.125rem;
   font-weight: 700;
@@ -824,13 +930,38 @@ p  { margin: 0 0 1em; }
 }
 .home .cta-box .label { color: var(--mint); }
 .home .cta-box h2 { color: #fff; margin: 0; font-size: clamp(1.25rem, 2.2vw, 1.625rem); }
-.home .cta-box h2 .line { display: block; }
+.home .cta-box p { margin: 12px 0 0; color: var(--on-navy); text-wrap: pretty; }
 .home .cta-box > div:first-child { flex: 1 1 auto; min-width: 0; }
 .home .cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 .home .cta-actions .btn { text-align: center; }
 
+/* ---------- PROFILE（小さめ） ---------- */
+.home .section-profile { padding: calc(var(--section-y) * 0.75) 0; }
+.home .profile-mini {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 760px;
+}
+.img-frame--avatar {
+  width: 160px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.home .profile-mini-name { margin: 0; font-size: 1.375rem; font-weight: 700; color: var(--navy); }
+.home .profile-mini-role { margin: 2px 0 12px; font-size: 0.9rem; font-weight: 700; color: var(--teal); }
+.home .profile-mini-quote { margin: 0 0 16px; text-wrap: pretty; }
+.text-link { font-weight: 700; text-decoration: none; }
+
 /* ---------- トップ：タブレット・スマホ ---------- */
 @media (max-width: 960px) {
+  .home .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .home .hero-visual { max-width: 520px; }
+  .home .problem-list { grid-template-columns: 1fr; gap: 16px; }
   .home .route { grid-template-columns: 1fr; gap: 48px; }
   .home .route-step + .route-step::before {
     content: "↓";
@@ -841,29 +972,55 @@ p  { margin: 0 0 1em; }
   .home .cases { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
-  .home .hero { padding: 144px 0 104px; }
-  .home .hero::after { width: 320px; height: 320px; border-width: 28px; right: -140px; top: 24px; }
-  .home .problem-list { grid-template-columns: 1fr; gap: 16px; }
+  .home .hero { padding: 136px 0 88px; }
+  .home .hero::after { width: 380px; height: 380px; right: -140px; bottom: -160px; }
+  .home .bento { grid-template-columns: 1fr; gap: 16px; }
+  .home .num-card--lg { grid-row: auto; padding: 32px 24px 28px; }
+  .home .num-card { padding: 24px 24px 22px; }
   .home .problem { padding: 24px 20px; font-size: 1.05rem; }
   .home .section-lead { margin: -8px 0 40px; }
   .home .route-step,
   .home .case { padding: 32px 24px; }
+  .home .profile-mini { grid-template-columns: 1fr; gap: 20px; }
+  .img-frame--avatar { width: 120px; }
   .home .cta-box { flex-direction: column; align-items: stretch; padding: 44px 24px; border-radius: var(--radius-lg); }
 }
 @media (max-width: 600px) {
   .home .hero .actions .btn { width: 100%; text-align: center; }
 }
 
-/* ---------- 動きを減らす設定の人には動きを止める ---------- */
+/* ---------- スクロールで下から 16px ふわっと出る（0.5秒・1回だけ） ---------- */
+/* JS（IntersectionObserver）が動いたときだけ隠すので、JSが無くても文字は最初から表示される */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+/* 数字は表示されたときに軽くフェードイン（カウントアップはしない） */
+.js-reveal .reveal .num-value {
+  opacity: 0;
+  transition: opacity 0.6s ease-out 0.15s;
+}
+.js-reveal .reveal.is-visible .num-value { opacity: 1; }
+
+/* ---------- 動きを減らす設定の人には、すべての動きを止める ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    transition: none !important;
+    animation: none !important;
   }
+  .js-reveal .reveal,
+  .js-reveal .reveal .num-value { opacity: 1 !important; transform: none !important; }
   .btn:hover,
-  .card:hover { transform: none; }
+  .card:hover,
+  .home .problem:hover,
+  .home .route-step:hover,
+  .home .case:hover,
+  .home .num-card:hover,
+  .plan-table-wrap:hover,
+  .start-box:hover { transform: none; }
 }

@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://medorica.jp/">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261007">
+  <link rel="stylesheet" href="style.css?v=20261007b">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,19 +59,50 @@
 
 <main>
   <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">CLINIC DATA DX</span>
+        <h1><span class="accent">診療時間</span>を、<br class="br-pc">取り戻す。</h1>
+        <p class="lead">レセコンに眠る数字を、売上を上げる判断に変える。</p>
+        <p class="proof">電子カルテ導入150院以上の経験をもつ現役事務長</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="contact.html">まずは相談してみる →</a>
+          <a class="btn btn-ghost" href="services.html#price">料金を見る</a>
+        </div>
+      </div>
+      <figure class="hero-visual">
+        <div class="img-frame img-frame--report">
+          <span class="img-placeholder">月次レポート（イメージ）</span>
+          <img src="images/report-sample.png" alt="売上・患者数・査定の推移をまとめた月次レポートのイメージ" width="800" height="600" onerror="this.remove()">
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-numbers reveal">
     <div class="container">
-      <span class="eyebrow">CLINIC DATA DX</span>
-      <h1>診療時間を、<br class="br-pc">取り戻す。</h1>
-      <p class="lead">レセコンに眠る数字を、売上を上げる判断に変える。</p>
-      <p class="proof">電子カルテ導入150院以上の経験をもつ現役事務長</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="contact.html">まずは相談してみる →</a>
-        <a class="btn btn-ghost" href="services.html#price">料金を見る</a>
+      <div class="section-head">
+        <span class="label">NUMBERS</span>
+        <h2>数字で見る、これまでの支援</h2>
+      </div>
+      <div class="bento">
+        <div class="num-card num-card--lg">
+          <p class="num-value">150<span>院以上</span></p>
+          <p class="num-text">電子カルテ導入支援</p>
+        </div>
+        <div class="num-card">
+          <p class="num-value">800<span>件超</span></p>
+          <p class="num-text">査定・返戻の分析</p>
+        </div>
+        <div class="num-card">
+          <p class="num-value num-value--range">約3日<span class="num-arrow">→</span>約3時間</p>
+          <p class="num-text">データ提出加算の試行データ作成（約680名分・エラーゼロ）</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-tint reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">PROBLEM</span>
@@ -80,11 +111,41 @@
       <div class="problem-list">
         <p class="problem">レセコンにある数字は、請求のためだけに使われています</p>
         <p class="problem">次に何をやめて何を始めるかが、勘と経験に頼っています</p>
+        <p class="problem">取れるはずの加算の取りこぼしに、気づけない</p>
       </div>
     </div>
   </section>
 
-  <section class="section section-tint" id="goal">
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">ONE ROUTE</span>
+        <h2>進み方は1本です</h2>
+      </div>
+      <ol class="route">
+        <li class="route-step">
+          <span class="route-num">01</span>
+          <h3>マニュアル整備</h3>
+          <p class="route-catch">話すだけで、手順書ができる。</p>
+          <p>属人化をほどく</p>
+        </li>
+        <li class="route-step">
+          <span class="route-num">02</span>
+          <h3>AIツール・加算</h3>
+          <p class="route-catch">算定ミスと取りこぼしを、入力の時点で防ぐ。取りに行くべき加算を、実際に取る。</p>
+        </li>
+        <li class="route-step route-goal">
+          <span class="route-num">03</span>
+          <h3>データで判断</h3>
+          <p class="route-catch">積み上がった数字が、経営の判断材料になる。</p>
+          <p><a href="#goal">→ 毎月の判断レポートへ</a></p>
+        </li>
+      </ol>
+      <p class="route-note">新しいシステムを買っていただく必要はありません。今お使いのExcel・Word・PDFのままです。</p>
+    </div>
+  </section>
+
+  <section class="section section-tint reveal" id="goal">
     <div class="container">
       <div class="section-head">
         <span class="label">OUR GOAL</span>
@@ -113,36 +174,7 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="label">ONE ROUTE</span>
-        <h2>進み方は1本です</h2>
-      </div>
-      <ol class="route">
-        <li class="route-step">
-          <span class="route-num">01</span>
-          <h3>マニュアル整備</h3>
-          <p class="route-catch">話すだけで、手順書ができる。</p>
-          <p>属人化をほどく</p>
-        </li>
-        <li class="route-step">
-          <span class="route-num">02</span>
-          <h3>AIツール・加算</h3>
-          <p class="route-catch">算定ミスと取りこぼしを、入力の時点で防ぐ。取りに行くべき加算を、実際に取る。</p>
-        </li>
-        <li class="route-step route-goal">
-          <span class="route-num">03</span>
-          <h3>データで判断</h3>
-          <p class="route-catch">積み上がった数字が、経営の判断材料になる。</p>
-          <p><a href="#goal">→ OUR GOAL につながる</a></p>
-        </li>
-      </ol>
-      <p class="route-note">新しいシステムを買っていただく必要はありません。今お使いのExcel・Word・PDFのままです。</p>
-    </div>
-  </section>
-
-  <section class="section section-tint">
+  <section class="section reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">CASE</span>
@@ -163,12 +195,34 @@
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="section section-tint section-profile reveal">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">PROFILE</span>
+        <h2 class="h2-sm">代表者</h2>
+      </div>
+      <div class="profile-mini">
+        <div class="img-frame img-frame--avatar">
+          <span class="img-placeholder">写真</span>
+          <img src="images/kida.jpg" alt="代表 貴田 恭平" width="240" height="240" onerror="this.remove()">
+        </div>
+        <div>
+          <p class="profile-mini-name">貴田 恭平</p>
+          <p class="profile-mini-role">電子カルテ導入150院以上の経験をもつ現役事務長</p>
+          <p class="profile-mini-quote">現場の事務長として、数字で判断できる院を一緒につくります。</p>
+          <a class="text-link" href="about.html">プロフィールを見る →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section reveal">
     <div class="container">
       <div class="cta-box">
         <div>
           <span class="label">CONTACT</span>
-          <h2><span class="line">まずは、今いちばん時間がかかっている業務を1つ。</span><span class="line">それだけ聞かせてください。</span></h2>
+          <h2>まずは、業務を1つ聞かせてください</h2>
+          <p>まずは、今いちばん時間がかかっている業務を1つ。それだけ聞かせてください。</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="contact.html">お問い合わせはこちら →</a>
@@ -211,6 +265,20 @@
       var open = nav.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+
+    // スクロールで表示されたセクションにクラスを付けるだけ（文字は差し込まない）
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js-reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   })();
 </script>
 </body>
