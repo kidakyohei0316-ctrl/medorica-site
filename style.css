@@ -937,14 +937,15 @@ p  { margin: 0 0 1em; }
 
 /* ---------- PROFILE（小さめ） ---------- */
 .home .section-profile { padding: calc(var(--section-y) * 0.75) 0; }
+/* 写真の枠があってもなくても崩れないよう flex にする（写真がないときは本文が横幅いっぱい） */
 .home .profile-mini {
-  display: grid;
-  grid-template-columns: 160px 1fr;
+  display: flex;
   gap: 40px;
   align-items: center;
-  max-width: 760px;
 }
+.home .profile-mini-body { flex: 1 1 auto; min-width: 0; }
 .img-frame--avatar {
+  flex: none;
   width: 160px;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -981,7 +982,7 @@ p  { margin: 0 0 1em; }
   .home .section-lead { margin: -8px 0 40px; }
   .home .route-step,
   .home .case { padding: 32px 24px; }
-  .home .profile-mini { grid-template-columns: 1fr; gap: 20px; }
+  .home .profile-mini { flex-direction: column; align-items: flex-start; gap: 20px; }
   .img-frame--avatar { width: 120px; }
   .home .cta-box { flex-direction: column; align-items: stretch; padding: 44px 24px; border-radius: var(--radius-lg); }
 }
