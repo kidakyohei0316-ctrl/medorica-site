@@ -580,6 +580,52 @@ p  { margin: 0 0 1em; }
 }
 .faq-item .answer p:last-child { margin-bottom: 0; }
 
+/* ---------- コラム記事 ---------- */
+.article { max-width: 760px; }
+.article-lead { font-size: 1.0625rem; text-wrap: pretty; }
+.article-block + .article-block { margin-top: 88px; }
+.article-block .section-head { margin-bottom: 28px; }
+.article h3 { font-size: 1.125rem; margin: 32px 0 12px; }
+.article p { text-wrap: pretty; }
+.article ul,
+.article ol { margin: 0 0 1em; padding-left: 1.4em; }
+.article li { margin-bottom: 0.4em; }
+.article .table { margin: 8px 0 20px; }
+.article .table th { width: 36%; }
+.article-note {
+  margin: 24px 0 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--teal);
+  background: var(--tint-teal);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.article-note p:last-child { margin-bottom: 0; }
+.article-sources {
+  margin-top: 88px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+.article-sources ul { padding-left: 1.2em; }
+.article-sources a { word-break: break-all; }
+.article-cta {
+  margin: 40px 0 0;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  font-weight: 700;
+  color: var(--navy);
+}
+@media (max-width: 860px) {
+  .article-block + .article-block { margin-top: 64px; }
+  .article-sources { margin-top: 64px; }
+}
+
+/* ---------- フッターのコラムリンク ---------- */
+.footer-heading { margin: 0 0 6px; font-weight: 700; color: var(--navy); font-size: 0.85rem; }
+.site-footer .footer-columns ul { flex-direction: column; gap: 4px; }
+
 /* ---------- お問い合わせ ---------- */
 .form { display: grid; gap: 20px; max-width: 680px; }
 .form label { display: block; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
