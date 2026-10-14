@@ -581,7 +581,45 @@ p  { margin: 0 0 1em; }
 .faq-item .answer p:last-child { margin-bottom: 0; }
 
 /* ---------- コラム記事 ---------- */
-.article { max-width: 760px; }
+/* PC：左に本文、右に300pxのサイドバー（目次＋CTA）を追従させる */
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 40px;
+  align-items: start;
+}
+.article { min-width: 0; }
+.article-side {
+  position: sticky;
+  /* 下層ページのヘッダー（高さ72px・追従）に隠れないよう、その下 24px の位置で止める */
+  top: calc(72px + 24px);
+  display: grid;
+  gap: 20px;
+}
+.article h2[id] { scroll-margin-top: calc(72px + 24px); }
+.side-toc,
+.side-cta {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.side-title { margin: 0 0 10px; font-size: 0.85rem; font-weight: 700; color: var(--navy); letter-spacing: 0.05em; }
+.side-toc ol { margin: 0; padding-left: 1.4em; font-size: 0.9rem; }
+.side-toc li { margin-bottom: 6px; }
+.side-toc a { color: var(--navy); text-decoration: none; }
+.side-toc a:hover { color: var(--teal); text-decoration: underline; }
+.side-cta { background: var(--tint-teal); border-color: transparent; }
+.side-cta-title { margin: 0 0 16px; font-weight: 700; color: var(--navy); line-height: 1.6; text-wrap: balance; }
+.side-cta .btn { display: block; text-align: center; padding: 14px 20px; }
+/* 960px以下：1カラム。目次は本文の上、CTAカードは本文の後ろ */
+@media (max-width: 960px) {
+  .article-layout { display: flex; flex-direction: column; align-items: stretch; gap: 32px; }
+  .article-side { display: contents; }
+  .side-toc { order: -1; }
+  .article { order: 0; }
+  .side-cta { order: 1; }
+}
 .article-lead { font-size: 1.0625rem; text-wrap: pretty; }
 .article-block + .article-block { margin-top: 88px; }
 .article-block .section-head { margin-bottom: 28px; }
@@ -592,6 +630,9 @@ p  { margin: 0 0 1em; }
 .article li { margin-bottom: 0.4em; }
 .article .table { margin: 8px 0 20px; }
 .article .table th { width: 36%; }
+@media (max-width: 600px) {
+  .article .table th { width: 100%; }
+}
 .article-note {
   margin: 24px 0 0;
   padding: 18px 22px;
@@ -676,11 +717,19 @@ p  { margin: 0 0 1em; }
   font-size: 0.9rem;
   color: var(--muted);
 }
+/* フッター：ロゴ／代表・連絡先／ナビ／コラム の4列 */
 .site-footer .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.5fr) minmax(0, 0.7fr) minmax(0, 1.4fr);
+  gap: 32px;
+  align-items: start;
+}
+.site-footer .footer-inner > ul { flex-direction: column; gap: 6px; }
+@media (max-width: 900px) {
+  .site-footer .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .site-footer .footer-inner { grid-template-columns: 1fr; gap: 24px; }
 }
 .site-footer img { height: 40px; width: auto; margin-bottom: 8px; }
 .footer-contact p { margin: 0 0 0.6em; font-size: 0.85rem; line-height: 1.7; }
