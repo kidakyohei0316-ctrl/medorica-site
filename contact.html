@@ -16,6 +16,14 @@
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css?v=20261014b">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJRQ71ZQBY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FJRQ71ZQBY');
+  </script>
 </head>
 <body>
 
@@ -48,6 +56,7 @@
     <div class="container">
       <form class="form" action="https://formspree.io/f/xoejvjaz" method="POST">
         <input type="hidden" name="_subject" value="メドリカ公式サイトからのお問い合わせ">
+        <input type="hidden" name="_next" value="https://medorica.jp/thanks">
         <div>
           <label for="name">お名前<span class="req">必須</span></label>
           <input id="name" name="name" type="text" required autocomplete="name">
@@ -76,6 +85,7 @@
           <textarea id="message" name="message" required></textarea>
         </div>
         <button class="btn btn-primary" type="submit">送信する</button>
+        <p class="note form-error" role="alert" hidden></p>
       </form>
       <p class="note" style="margin-top:12px">メールは24時間受け付けています。返信は2営業日以内にお送りします。</p>
     </div>
@@ -126,7 +136,7 @@
         </ul>
       </div>
     </div>
-    <p class="copyright">&copy; メドリカ（Medorica）</p>
+    <p class="copyright">&copy; メドリカ（Medorica）　<a href="privacy">プライバシーポリシー</a></p>
   </div>
 </footer>
 
@@ -152,6 +162,36 @@
       });
     }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<script>
+  // フォームは fetch で Formspree に送り、成功したら /thanks へ移動する
+  // （JSが無効な環境では通常のPOSTのまま＝Formspree標準の完了画面）
+  (function () {
+    var form = document.querySelector('form.form');
+    if (!form || !window.fetch || !window.FormData) return;
+    var button = form.querySelector('button[type="submit"]');
+    var error = form.querySelector('.form-error');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      error.hidden = true;
+      button.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          location.href = '/thanks';
+          return;
+        }
+        throw new Error('status ' + res.status);
+      }).catch(function () {
+        error.textContent = '送信できませんでした。時間をおいてもう一度お試しいただくか、info@medorica.jp までメールでご連絡ください。';
+        error.hidden = false;
+        button.disabled = false;
+      });
+    });
   })();
 </script>
 </body>
