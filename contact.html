@@ -57,7 +57,7 @@
       <!-- FAX・郵送DMのQR（?utm_medium=dm）から来た人にだけ表示する。合言葉・受付番号と流入元をフォームに入れる -->
       <div class="monitor-box dm-welcome" hidden>
         <span class="badge">FAX・ご案内をご覧の方へ</span>
-        <p>ご案内をお読みいただき、ありがとうございます。合言葉（受付番号）は下の欄に入っています。AI検索対策（GEO）診断のモニター価格（先着3院・2027年3月まで）20,000円（税込）のお申し込みも、このフォームでお受けしています。</p>
+        <p>ご案内をお読みいただき、ありがとうございます。合言葉（受付番号）は下の欄に入っています。まずは<strong>無料の簡易診断（AIに3問）</strong>から始められます。AIに3つの質問をして、院がどう紹介されているかを簡単にお伝えします。くわしい計測と改善点の報告書が必要な場合は、AI検索対策（GEO）診断（モニター価格・先着3院・2027年3月まで 20,000円・税込）もこのフォームでお受けしています。</p>
       </div>
       <form class="form" action="https://formspree.io/f/xoejvjaz" method="POST">
         <input type="hidden" name="_subject" value="メドリカ公式サイトからのお問い合わせ">
@@ -84,6 +84,7 @@
           <label for="topic">ご相談内容<span class="req">必須</span></label>
           <select id="topic" name="topic" required>
             <option value="">選択してください</option>
+            <option>無料の簡易診断（AIに3問）</option>
             <optgroup label="月額プラン">
               <option>スタンダード（モニター価格）</option>
               <option>スタンダード</option>
@@ -212,7 +213,7 @@
       var welcome = document.querySelector('.dm-welcome');
       if (welcome) welcome.hidden = false;
       var topic = form.elements.topic;
-      if (!topic.value) topic.value = 'AI検索対策（GEO）診断（モニター価格）';
+      if (!topic.value) topic.value = '無料の簡易診断（AIに3問）';
     }
 
     form.addEventListener('submit', function (e) {
