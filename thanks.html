@@ -15,7 +15,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-FJRQ71ZQBY');
-    gtag('event', 'generate_lead');
+    gtag('event', 'generate_lead', { lead_source: new URLSearchParams(location.search).get('from') || 'web' });
   </script>
 </head>
 <body>
@@ -40,7 +40,22 @@
   <section class="page-hero">
     <div class="container">
       <h1>お問い合わせありがとうございました</h1>
-      <p><a href="./">トップへ戻る</a></p>
+      <p>内容を確認し、2営業日以内に代表の貴田からメールでご連絡します。お電話番号をご記入いただいた場合は、お電話することもあります。</p>
+    </div>
+  </section>
+
+  <section class="section section-compact">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">NEXT</span>
+        <h2 class="h2-sm">このあとの流れ</h2>
+      </div>
+      <ol class="steps">
+        <li><strong>ご返信</strong>2営業日以内に、お話を伺う日時の候補をお送りします。</li>
+        <li><strong>お話を伺う</strong>オンラインで30分ほど。いま気になっていることを1つ聞かせてください。</li>
+        <li><strong>ご提案・お見積り</strong>どこから始めるか、内容と費用を書面でお出しします。</li>
+      </ol>
+      <p class="route-note">お待ちのあいだに：<a href="services">サービス内容と料金</a>／<a href="column-data-teishutsu">外来データ提出加算の提出期限</a>／<a href="./">トップへ戻る</a></p>
     </div>
   </section>
 </main>

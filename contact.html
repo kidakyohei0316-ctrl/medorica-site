@@ -54,9 +54,16 @@
 
   <section class="section reveal">
     <div class="container">
+      <!-- FAX・郵送DMのQR（?utm_medium=dm）から来た人にだけ表示する。合言葉・受付番号と流入元をフォームに入れる -->
+      <div class="monitor-box dm-welcome" hidden>
+        <span class="badge">FAX・ご案内をご覧の方へ</span>
+        <p>ご案内をお読みいただき、ありがとうございます。合言葉（受付番号）は下の欄に入っています。AI検索対策（GEO）診断のモニター価格（先着3院・2027年3月まで）20,000円（税込）のお申し込みも、このフォームでお受けしています。</p>
+      </div>
       <form class="form" action="https://formspree.io/f/xoejvjaz" method="POST">
         <input type="hidden" name="_subject" value="メドリカ公式サイトからのお問い合わせ">
         <input type="hidden" name="_next" value="https://medorica.jp/thanks">
+        <input type="hidden" name="source" value="">
+        <input type="hidden" name="campaign" value="">
         <div>
           <label for="name">お名前<span class="req">必須</span></label>
           <input id="name" name="name" type="text" required autocomplete="name">
@@ -68,6 +75,10 @@
         <div>
           <label for="email">メールアドレス<span class="req">必須</span></label>
           <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="tel">お電話番号<span class="note">（任意・お電話での連絡をご希望の場合）</span></label>
+          <input id="tel" name="tel" type="tel" autocomplete="tel">
         </div>
         <div>
           <label for="topic">ご相談内容<span class="req">必須</span></label>
@@ -92,8 +103,12 @@
           </select>
         </div>
         <div>
-          <label for="message">本文<span class="req">必須</span></label>
-          <textarea id="message" name="message" required></textarea>
+          <label for="message">本文<span class="note">（任意・気になっていることがあれば）</span></label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <div>
+          <label for="code">合言葉・受付番号<span class="note">（任意・FAXや郵送のご案内に記載）</span></label>
+          <input id="code" name="code" type="text" autocomplete="off">
         </div>
         <button class="btn btn-primary" type="submit">送信する</button>
         <p class="note form-error" role="alert" hidden></p>
@@ -183,6 +198,23 @@
     if (!form || !window.fetch || !window.FormData) return;
     var button = form.querySelector('button[type="submit"]');
     var error = form.querySelector('.form-error');
+
+    // 流入元（utm）をフォームに残す。FAX・郵送DMのQRから来た人には合言葉を入れて案内を出す
+    var params = new URLSearchParams(location.search);
+    var src = params.get('utm_source') || '';
+    var medium = params.get('utm_medium') || '';
+    var campaign = params.get('utm_campaign') || '';
+    form.elements.source.value = src ? (src + ' / ' + medium) : (document.referrer ? 'referrer: ' + document.referrer : 'direct');
+    form.elements.campaign.value = campaign;
+    if (medium === 'dm') {
+      var codes = { fax: 'F1124', post: 'D1124' };
+      if (codes[src] && campaign === '2611' && !form.elements.code.value) form.elements.code.value = codes[src];
+      var welcome = document.querySelector('.dm-welcome');
+      if (welcome) welcome.hidden = false;
+      var topic = form.elements.topic;
+      if (!topic.value) topic.value = 'AI検索対策（GEO）診断（モニター価格）';
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       error.hidden = true;
@@ -193,7 +225,8 @@
         headers: { 'Accept': 'application/json' }
       }).then(function (res) {
         if (res.ok) {
-          location.href = '/thanks';
+          // 完了ページで GA4 の generate_lead を送る。DM・FAX 経由かを分けて数えるため流入元を渡す
+          location.href = '/thanks' + (src ? '?from=' + encodeURIComponent(src) : '');
           return;
         }
         throw new Error('status ' + res.status);
