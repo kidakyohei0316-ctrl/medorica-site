@@ -252,7 +252,10 @@
       var codes = { fax: 'F1124', post: 'D1124' };
       // 医院ごとのQR（utm_content=n001 など）なら受付番号まで入れる（例：D1124-001）
       var no = /^n(\d{1,4})$/.exec(content);
-      if (codes[src] && campaign === '2611' && !form.elements.code.value) form.elements.code.value = codes[src] + (no ? '-' + no[1] : '');
+      // 新しい QR は utm_content に受付番号そのもの（例 F1124-107）を入れる。古い QR（n001 など）は従来どおり
+      var full = /^[FD]\d{4}-\d{1,4}$/.exec(content);
+      if (full && !form.elements.code.value) form.elements.code.value = content;
+      else if (codes[src] && campaign === '2611' && !form.elements.code.value) form.elements.code.value = codes[src] + (no ? '-' + no[1] : '');
       var welcome = document.querySelector('.dm-welcome');
       if (welcome) welcome.hidden = false;
       var topic = form.elements.topic;
