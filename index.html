@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://medorica.jp/">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261014b">
+  <link rel="stylesheet" href="style.css?v=20261124">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,6 +41,18 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "メドリカ（Medorica）",
+  "alternateName": [
+    "メドリカ",
+    "Medorica"
+  ],
+  "url": "https://medorica.jp/"
+}
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJRQ71ZQBY"></script>
   <script>
@@ -50,17 +62,19 @@
     gtag('config', 'G-FJRQ71ZQBY');
   </script>
 </head>
-<body class="home">
+<body class="home has-sticky-cta">
 
-<header class="site-header site-header--overlay">
+<header class="site-header">
   <div class="container">
-    <a class="site-logo" href="./"><img src="images/medorica_logo_A_white_text.png" alt="メドリカ（Medorica）｜Medical Recover" width="220" height="64"></a>
+    <a class="site-logo" href="./"><img src="images/medorica_logo_A_transparent.png" alt="メドリカ（Medorica）｜Medical Recover" width="220" height="64"></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">メニュー</button>
     <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
       <ul>
-        <li><a href="./" aria-current="page">トップ</a></li>
-        <li><a href="services">サービス</a></li>
-        <li><a href="about">代表者プロフィール</a></li>
+        <li><a href="geo">AI検索対策</a></li>
+        <li><a href="data-teishutsu">データ提出加算</a></li>
+        <li><a href="services">料金</a></li>
+        <li><a href="column">コラム</a></li>
+        <li><a href="about">代表者</a></li>
         <li><a href="faq">よくあるご質問</a></li>
         <li class="nav-cta"><a href="contact">お問い合わせ</a></li>
       </ul>
@@ -72,25 +86,74 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">CLINIC SUPPORT</span>
-        <h1>クリニックの経営を、<span class="accent">3本の柱</span>で支える。</h1>
-        <p class="lead">AI検索対策（GEO）・データ提出加算・再診患者の離脱対策。院の実務に合わせて、一緒に進めます。</p>
-        <p class="proof">電子カルテ導入150院以上の経験をもつ現役事務長</p>
+        <span class="eyebrow">クリニック経営の実務支援</span>
+        <h1>AIに聞かれたとき、先生の医院は<span class="accent">正しく</span>出ていますか。</h1>
+        <p class="lead">ChatGPT や Google の AI による概要で、院の名前・診療時間・診療内容がどう紹介されているかを確かめ、直すところをお伝えします。</p>
+        <p class="proof">電子カルテ導入150院以上の経験をもつ現役事務長が、自分で計測します</p>
         <div class="actions">
-          <a class="btn btn-primary" href="contact">まずは相談してみる →</a>
-          <a class="btn btn-ghost" href="services#price">料金を見る</a>
+          <a class="btn btn-primary" href="geo-shindan">無料の簡易診断（AIに3問）→</a>
+          <a class="btn btn-ghost" href="geo">AI検索対策（GEO）を見る</a>
         </div>
       </div>
-      <figure class="hero-visual">
-        <div class="img-frame img-frame--report">
-          <!-- 画像がないときの仮表示：<span class="img-placeholder" aria-hidden="true">月次レポート（イメージ）</span> -->
-          <img src="images/report-sample.png" alt="売上・患者数・査定の推移をまとめた月次レポートのイメージ" width="800" height="600" onerror="this.remove()">
-        </div>
+      <figure class="hero-visual diag-sample" aria-label="簡易診断の結果の見本">
+        <p class="diag-sample-title">簡易診断の結果（見本）</p>
+        <p class="diag-sample-sub">見本内科クリニック（架空の医院）／ChatGPT・Google の AI による概要</p>
+        <table>
+          <tr><th>質問</th><th>結果</th></tr>
+          <tr><td>「◯◯区 内科」</td><td><span class="ng">院名が出ない</span></td></tr>
+          <tr><td>「見本内科クリニック 診療時間」</td><td><span class="ng">土曜の時間が古い</span></td></tr>
+          <tr><td>「見本内科クリニック 評判」</td><td><span class="ok">正しく紹介</span></td></tr>
+        </table>
+        <figcaption>結果はA4 1枚にまとめ、直すところの候補とあわせてお送りします。</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="section reveal" id="pillars">
+  <section class="section section-tint reveal">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">PROBLEM</span>
+        <h2>AIの答えに、こんなことは出ていませんか</h2>
+      </div>
+      <div class="problem-list">
+        <p class="problem">区や市の名前だけで聞くと、院の名前が出てこない</p>
+        <p class="problem">古い診療時間や、違う診療科が出ている</p>
+        <p class="problem">口コミの要約で、厳しい声だけが目立っている</p>
+      </div>
+      <p class="route-note">AIでの見え方を調べる中で、こうした例は珍しくないことが分かってきました（特定の医院のことではありません）。専門外来や自費診療の内容が、AIに伝わっていないこともあります。</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="start">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">HOW TO START</span>
+        <h2>始め方は、3段階から選べます</h2>
+      </div>
+      <ol class="ladder">
+        <li class="is-first">
+          <h3>簡易診断（AIに3問）</h3>
+          <p class="ladder-price">無料<span>1院1回まで。結果はA4 1枚・5営業日以内</span></p>
+          <p>院に合わせた3つの質問をAIに聞き、院がどう紹介されているかをお伝えします。</p>
+          <p><a class="text-link" href="geo-shindan">簡易診断を申し込む →</a></p>
+        </li>
+        <li>
+          <h3>AI検索対策（GEO）診断</h3>
+          <p class="ladder-price">30,000円（税込）<span>モニター価格（先着3院・2027年3月まで）20,000円</span></p>
+          <p>決まった質問で、AIごとの回答を計測し、誤り・伝わっていない内容・直す順番を報告書にまとめます。</p>
+          <p><a class="text-link" href="geo#price">GEO診断の内容を見る →</a></p>
+        </li>
+        <li>
+          <h3>月額で続ける</h3>
+          <p class="ladder-price">月30,000円〜（税込）<span>GEO＋Googleマップ対策（MEO）。縛りなし</span></p>
+          <p>毎月計測して、公式サイト・Googleビジネスプロフィール・ポータルサイトの改善を続けます。</p>
+          <p><a class="text-link" href="services#price">料金表を見る →</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-tint reveal" id="pillars">
     <div class="container">
       <div class="section-head">
         <span class="label">THREE PILLARS</span>
@@ -100,101 +163,78 @@
         <article class="card">
           <span class="num">01</span>
           <h3>AI検索対策（GEO）</h3>
-          <p>ChatGPT や Google の AI による概要などで、院がどう紹介されているかを計測します。誤った情報や伝わっていない診療内容を見つけ、改善して、再計測の結果をご報告します。</p>
-          <p><a class="text-link" href="services#pillar-geo">くわしく見る →</a></p>
+          <p>ChatGPT・Google の AI による概要・Gemini で、院がどう紹介されているかを計測します。誤った情報や伝わっていない診療内容を見つけ、改善して、再計測の結果をご報告します。</p>
+          <p><a class="text-link" href="geo">くわしく見る →</a></p>
         </article>
         <article class="card">
           <span class="num">02</span>
           <h3>データ提出加算</h3>
-          <p>届出の準備から毎回の提出データの作成・提出までを代行します。提出期限と様式の違いは、<a href="column-data-teishutsu">データ提出加算の提出期限</a>で整理しています。</p>
-          <p><a class="text-link" href="services#pillar-data">くわしく見る →</a></p>
+          <p>届出の準備から毎回の提出データの作成・提出までを代行し、要件を満たす加算を適正に算定できるようにします。次の提出期限は令和9年2月22日（必着）です。</p>
+          <p><a class="text-link" href="data-teishutsu">くわしく見る →</a></p>
         </article>
         <article class="card">
           <span class="num">03</span>
           <h3>再診患者の離脱対策</h3>
           <p>再診が途切れた患者さんをデータから把握できるようにし、次回予約の取り方や受診のご案内の仕組みを、院の運用に合わせて整えます。</p>
-          <p><a class="text-link" href="services#pillar-saishin">くわしく見る →</a></p>
+          <p><a class="text-link" href="saishin">くわしく見る →</a></p>
         </article>
       </div>
-      <p class="route-note">経営・運営のご相談、マニュアル作成、売上分析・返戻査定分析もあわせてお受けしています。<a href="services#price">料金表を見る →</a></p>
-    </div>
-  </section>
-
-  <section class="section section-tint reveal" id="goal">
-    <div class="container">
-      <div class="section-head">
-        <span class="label">OUR GOAL</span>
-        <h2>3つの柱で、売上アップの実現を目指す。</h2>
-      </div>
-      <p class="section-lead">新しい患者さんに見つけてもらう。取れる加算を確実に算定する。通院を続けてもらう。3つの柱を院の実務に合わせて進め、売上につながる状態づくりを支援します。</p>
-      <div class="problem-list">
-        <p class="problem">AI検索対策（GEO）で、新しい患者さんに見つけてもらう</p>
-        <p class="problem">データ提出加算で、取れる加算を確実に算定する</p>
-        <p class="problem">再診患者の離脱対策で、通院を続けてもらう</p>
-      </div>
-      <p class="route-note">売上の金額や増加率をお約束するものではありません。毎月の数字を一緒に見ながら、次に何をやるかを決めていきます。</p>
+      <p class="route-note">3つの柱で、新しい患者さんに見つけてもらう・要件を満たす加算を適正に算定する・通院を続けてもらう、を進めます。売上の金額や増加率をお約束するものではありません。経営・運営のご相談、マニュアル作成、売上分析・返戻査定分析もお受けしています。</p>
     </div>
   </section>
 
   <section class="section section-numbers reveal">
     <div class="container">
       <div class="section-head">
-        <span class="label">NUMBERS</span>
-        <h2>数字で見る、これまでの支援</h2>
+        <span class="label">BACKGROUND</span>
+        <h2>代表がこれまでに取り組んだこと</h2>
       </div>
       <div class="bento">
         <div class="num-card num-card--lg">
           <p class="num-value">150<span>院以上</span></p>
-          <p class="num-text">電子カルテ導入支援</p>
+          <p class="num-text">電子カルテメーカーでの導入支援</p>
         </div>
         <div class="num-card">
           <p class="num-value">800<span>件超</span></p>
-          <p class="num-text">査定・返戻の分析</p>
+          <p class="num-text">事務長として分析した査定・返戻（約2年分）。防げた減点の約7割が傷病名の入力漏れでした</p>
         </div>
         <div class="num-card">
-          <p class="num-value num-value--range">エラーゼロ</p>
-          <p class="num-text">外来データ提出加算・約680名分の提出を代行</p>
+          <p class="num-value">約680<span>名分</span></p>
+          <p class="num-text">外来データ提出加算の試行データを作成・提出（エラーゼロ）</p>
         </div>
       </div>
+      <p class="note" style="margin-top:16px">いずれも代表が前職・現職で取り組んだ内容です。くわしくは<a href="about">代表者プロフィール</a>をご覧ください。</p>
     </div>
   </section>
 
   <section class="section section-tint reveal">
     <div class="container">
       <div class="section-head">
-        <span class="label">PROBLEM</span>
-        <h2>いま、多くのクリニックで起きていること</h2>
+        <span class="label">COLUMN</span>
+        <h2>コラム</h2>
       </div>
-      <div class="problem-list">
-        <p class="problem">AIに院のことを聞くと、診療内容や院の情報が正しく伝わっていない</p>
-        <p class="problem">データ提出加算を取りたいが、毎回の提出作業で止まっている</p>
-        <p class="problem">再診が途切れた患者さんに、気づく仕組みがない</p>
+      <div class="column-cards">
+        <a class="column-card" href="column-ai-selfcheck">
+          <p class="column-cat">AI検索</p>
+          <h3>AIに自院のことを聞く10の質問</h3>
+          <p>院名・地域・症状・条件の4つの型で、AIの答えを自分で確かめる方法。</p>
+        </a>
+        <a class="column-card" href="column-data-teishutsu">
+          <p class="column-cat">データ提出加算</p>
+          <h3>外来データ提出加算の提出期限と届出の流れ</h3>
+          <p>令和8年度の期限、様式7の10と7の11の違い、充実管理加算。</p>
+        </a>
+        <a class="column-card" href="column-sashou-henrei">
+          <p class="column-cat">請求・経営</p>
+          <h3>査定・返戻は、どこで起きているのか</h3>
+          <p>査定と返戻の違い、主な原因、最初に確認すること。</p>
+        </a>
       </div>
+      <p style="margin-top:20px"><a class="text-link" href="column">コラムの一覧へ →</a></p>
     </div>
   </section>
 
-  <section class="section reveal">
-    <div class="container">
-      <div class="section-head">
-        <span class="label">CASE</span>
-        <h2>支援の事例</h2>
-      </div>
-      <div class="cases">
-        <article class="case">
-          <p class="case-tag">査定・返戻の分析</p>
-          <p class="case-figure">800<span>件超</span></p>
-          <p>約2年分・800件超の査定・返戻を分析し、防げた減点を特定（約7割が傷病名の入力漏れ）。</p>
-        </article>
-        <article class="case">
-          <p class="case-tag">外来データ提出加算</p>
-          <p class="case-figure">約680<span>名分</span></p>
-          <p>外来データ提出加算の試行データ（約680名分）の作成・提出を代行。エラーゼロで提出・合格。内科・別レセコン環境の他院でも提出まで対応。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint section-profile reveal">
+  <section class="section section-profile reveal">
     <div class="container">
       <div class="section-head">
         <span class="label">PROFILE</span>
@@ -222,12 +262,12 @@
       <div class="cta-box">
         <div>
           <span class="label">CONTACT</span>
-          <h2>どの柱から始めるか、一緒に整理しましょう</h2>
-          <p>「AI検索で院がどう出ているか知りたい」「加算の提出が負担」など、今いちばん気になっていることを1つ聞かせてください。</p>
+          <h2>まずは、AIに3問だけ聞いてみませんか</h2>
+          <p>医院名を教えていただくだけで始められます。患者さんの情報は使いません。ほかのご相談はお問い合わせから。</p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact">お問い合わせはこちら →</a>
-          <a class="btn btn-ghost" href="services#price">料金を見る</a>
+          <a class="btn btn-primary" href="geo-shindan">無料の簡易診断（AIに3問）→</a>
+          <a class="btn btn-ghost" href="contact">お問い合わせ</a>
         </div>
       </div>
     </div>
@@ -245,25 +285,34 @@
         <p>代表：貴田 恭平（きだ きょうへい）<br>電子カルテメーカー出身の現役クリニック事務長</p>
         <p>メール：<a href="mailto:info@medorica.jp">info@medorica.jp</a><br>FAX：06-7655-9350</p>
         <p>メールは24時間受付／返信は2営業日以内</p>
+        <p>メドリカは医療機関ではなく、診療所・クリニック向けに経営の実務を支援する事業者です。</p>
       </div>
-      <ul>
-        <li><a href="./">トップ</a></li>
-        <li><a href="services">サービス</a></li>
-        <li><a href="about">代表者プロフィール</a></li>
-        <li><a href="faq">よくあるご質問</a></li>
-        <li><a href="contact">お問い合わせ</a></li>
-      </ul>
       <div class="footer-columns">
-        <p class="footer-heading">コラム</p>
+        <p class="footer-heading">サービス</p>
         <ul>
-          <li><a href="column-data-teishutsu">データ提出加算の提出期限</a></li>
-          <li><a href="column-sashou-henrei">査定・返戻は、どこで起きているのか</a></li>
+          <li><a href="geo">AI検索対策（GEO）</a></li>
+          <li><a href="geo-shindan">無料の簡易診断（AIに3問）</a></li>
+          <li><a href="data-teishutsu">データ提出加算の代行</a></li>
+          <li><a href="saishin">再診患者の離脱対策</a></li>
+          <li><a href="services">サービス内容と料金</a></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-heading">メドリカについて</p>
+        <ul>
+          <li><a href="./">トップ</a></li>
+          <li><a href="column">コラム</a></li>
+          <li><a href="about">代表者プロフィール</a></li>
+          <li><a href="faq">よくあるご質問</a></li>
+          <li><a href="contact">お問い合わせ</a></li>
         </ul>
       </div>
     </div>
     <p class="copyright">&copy; メドリカ（Medorica）　<a href="privacy">プライバシーポリシー</a></p>
   </div>
 </footer>
+
+<a class="sticky-cta" href="geo-shindan">無料の簡易診断（AIに3問）を申し込む</a>
 
 <script>
   (function () {

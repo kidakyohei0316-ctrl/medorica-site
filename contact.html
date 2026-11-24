@@ -15,7 +15,27 @@
   <meta property="og:url" content="https://medorica.jp/contact">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261014b">
+  <link rel="stylesheet" href="style.css?v=20261124">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://medorica.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "お問い合わせ",
+      "item": "https://medorica.jp/contact"
+    }
+  ]
+}
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJRQ71ZQBY"></script>
   <script>
@@ -33,9 +53,11 @@
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">メニュー</button>
     <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
       <ul>
-        <li><a href="./">トップ</a></li>
-        <li><a href="services">サービス</a></li>
-        <li><a href="about">代表者プロフィール</a></li>
+        <li><a href="geo">AI検索対策</a></li>
+        <li><a href="data-teishutsu">データ提出加算</a></li>
+        <li><a href="services">料金</a></li>
+        <li><a href="column">コラム</a></li>
+        <li><a href="about">代表者</a></li>
         <li><a href="faq">よくあるご質問</a></li>
         <li class="nav-cta"><a href="contact" aria-current="page">お問い合わせ</a></li>
       </ul>
@@ -46,9 +68,10 @@
 <main>
   <section class="page-hero">
     <div class="container">
+      <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="./">トップ</a></li><li aria-current="page">お問い合わせ</li></ol></nav>
       <span class="label">CONTACT</span>
       <h1>お問い合わせ</h1>
-      <p>ご相談・ご質問は、下記フォームまたはメールでお気軽にご連絡ください。</p>
+      <p>ご相談・ご質問は、下記フォームまたはメールでお気軽にご連絡ください。AIでの見え方を確かめたい場合は、<a href="geo-shindan">無料の簡易診断（AIに3問）</a>のページからも申し込めます。</p>
     </div>
   </section>
 
@@ -147,19 +170,26 @@
         <p>代表：貴田 恭平（きだ きょうへい）<br>電子カルテメーカー出身の現役クリニック事務長</p>
         <p>メール：<a href="mailto:info@medorica.jp">info@medorica.jp</a><br>FAX：06-7655-9350</p>
         <p>メールは24時間受付／返信は2営業日以内</p>
+        <p>メドリカは医療機関ではなく、診療所・クリニック向けに経営の実務を支援する事業者です。</p>
       </div>
-      <ul>
-        <li><a href="./">トップ</a></li>
-        <li><a href="services">サービス</a></li>
-        <li><a href="about">代表者プロフィール</a></li>
-        <li><a href="faq">よくあるご質問</a></li>
-        <li><a href="contact">お問い合わせ</a></li>
-      </ul>
       <div class="footer-columns">
-        <p class="footer-heading">コラム</p>
+        <p class="footer-heading">サービス</p>
         <ul>
-          <li><a href="column-data-teishutsu">データ提出加算の提出期限</a></li>
-          <li><a href="column-sashou-henrei">査定・返戻は、どこで起きているのか</a></li>
+          <li><a href="geo">AI検索対策（GEO）</a></li>
+          <li><a href="geo-shindan">無料の簡易診断（AIに3問）</a></li>
+          <li><a href="data-teishutsu">データ提出加算の代行</a></li>
+          <li><a href="saishin">再診患者の離脱対策</a></li>
+          <li><a href="services">サービス内容と料金</a></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-heading">メドリカについて</p>
+        <ul>
+          <li><a href="./">トップ</a></li>
+          <li><a href="column">コラム</a></li>
+          <li><a href="about">代表者プロフィール</a></li>
+          <li><a href="faq">よくあるご質問</a></li>
+          <li><a href="contact">お問い合わせ</a></li>
         </ul>
       </div>
     </div>
@@ -208,6 +238,16 @@
     var content = params.get('utm_content') || '';
     form.elements.source.value = src ? (src + ' / ' + medium) : (document.referrer ? 'referrer: ' + document.referrer : 'direct');
     form.elements.campaign.value = campaign + (content ? ' / ' + content : '');
+    // 各ページの「申し込む」ボタン（?menu=）から来たら、相談内容を選んだ状態にする
+    var menus = {
+      shindan: '無料の簡易診断（AIに3問）',
+      geo: 'AI検索対策（GEO）診断（モニター価格）',
+      'geo-meo': 'AI検索対策（GEO）＋Googleマップ対策（MEO） 月額',
+      data: 'データ提出加算',
+      saishin: '再診患者の離脱対策について'
+    };
+    var menu = params.get('menu');
+    if (menus[menu]) form.elements.topic.value = menus[menu];
     if (medium === 'dm') {
       var codes = { fax: 'F1124', post: 'D1124' };
       // 医院ごとのQR（utm_content=n001 など）なら受付番号まで入れる（例：D1124-001）
