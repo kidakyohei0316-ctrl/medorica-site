@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://medorica.jp/">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261124">
+  <link rel="stylesheet" href="style.css?v=20261124b">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -89,7 +89,7 @@
         <span class="eyebrow">クリニック経営の実務支援</span>
         <h1>AIに聞かれたとき、先生の医院は<span class="accent">正しく</span>出ていますか。</h1>
         <p class="lead">ChatGPT や Google の AI による概要で、院の名前・診療時間・診療内容がどう紹介されているかを確かめ、直すところをお伝えします。</p>
-        <p class="proof">電子カルテ導入150院以上の経験をもつ現役事務長が、自分で計測します</p>
+        <p class="proof">計測は代表が自分で行い、結果をメールでお送りします</p>
         <div class="actions">
           <a class="btn btn-primary" href="geo-shindan">無料の簡易診断（AIに3問）→</a>
           <a class="btn btn-ghost" href="geo">AI検索対策（GEO）を見る</a>
@@ -249,8 +249,7 @@
         -->
         <div class="profile-mini-body">
           <p class="profile-mini-name">貴田 恭平</p>
-          <p class="profile-mini-role">電子カルテ導入150院以上の経験をもつ現役事務長</p>
-          <p class="profile-mini-quote">現場の事務長として、院の実務に合わせて一緒に進めます。</p>
+          <p class="profile-mini-quote">院の実務に合わせて、一緒に進めます。</p>
           <a class="text-link" href="about">プロフィールを見る →</a>
         </div>
       </div>
@@ -336,6 +335,21 @@
       });
     }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<script>
+  // スマホの固定ボタン：同じ「簡易診断」のボタンが画面に見えている間は隠し、見えなくなったら出す
+  (function () {
+    var sticky = document.querySelector('.sticky-cta');
+    if (!sticky || !('IntersectionObserver' in window)) return;
+    var targets = document.querySelectorAll('main a.btn[href^="geo-shindan"]');
+    if (!targets.length) return;
+    var visible = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target); });
+      sticky.classList.toggle('is-hidden', visible.size > 0);
+    });
+    targets.forEach(function (t) { io.observe(t); });
   })();
 </script>
 </body>

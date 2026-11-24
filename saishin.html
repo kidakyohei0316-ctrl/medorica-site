@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://medorica.jp/saishin">
   <meta property="og:image" content="https://medorica.jp/images/medorica_logo_A_white.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css?v=20261124">
+  <link rel="stylesheet" href="style.css?v=20261124b">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -200,6 +200,21 @@
       });
     }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<script>
+  // スマホの固定ボタン：同じ「簡易診断」のボタンが画面に見えている間は隠し、見えなくなったら出す
+  (function () {
+    var sticky = document.querySelector('.sticky-cta');
+    if (!sticky || !('IntersectionObserver' in window)) return;
+    var targets = document.querySelectorAll('main a.btn[href^="geo-shindan"]');
+    if (!targets.length) return;
+    var visible = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target); });
+      sticky.classList.toggle('is-hidden', visible.size > 0);
+    });
+    targets.forEach(function (t) { io.observe(t); });
   })();
 </script>
 </body>

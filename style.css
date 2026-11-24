@@ -1315,3 +1315,7 @@ p  { margin: 0 0 1em; }
 /* ---------- フッター：ロゴ／連絡先／サービス／メドリカについて の4列 ---------- */
 .site-footer .footer-inner > div > ul { flex-direction: column; gap: 6px; }
 .site-footer .footer-columns + .footer-columns { margin-top: 0; }
+
+/* 同じボタンが画面に見えている間は隠す（JS が is-hidden を付け外しする） */
+.sticky-cta { transition: opacity 0.2s, transform 0.2s; }
+.sticky-cta.is-hidden { opacity: 0; transform: translateY(16px); pointer-events: none; }
