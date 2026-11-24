@@ -205,11 +205,14 @@
     var src = params.get('utm_source') || '';
     var medium = params.get('utm_medium') || '';
     var campaign = params.get('utm_campaign') || '';
+    var content = params.get('utm_content') || '';
     form.elements.source.value = src ? (src + ' / ' + medium) : (document.referrer ? 'referrer: ' + document.referrer : 'direct');
-    form.elements.campaign.value = campaign;
+    form.elements.campaign.value = campaign + (content ? ' / ' + content : '');
     if (medium === 'dm') {
       var codes = { fax: 'F1124', post: 'D1124' };
-      if (codes[src] && campaign === '2611' && !form.elements.code.value) form.elements.code.value = codes[src];
+      // 医院ごとのQR（utm_content=n001 など）なら受付番号まで入れる（例：D1124-001）
+      var no = /^n(\d{1,4})$/.exec(content);
+      if (codes[src] && campaign === '2611' && !form.elements.code.value) form.elements.code.value = codes[src] + (no ? '-' + no[1] : '');
       var welcome = document.querySelector('.dm-welcome');
       if (welcome) welcome.hidden = false;
       var topic = form.elements.topic;
