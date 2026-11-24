@@ -75,6 +75,7 @@
 ## コラム
 
 - [コラムの一覧](https://medorica.jp/column)
+- [AIの回答で診療時間・住所が違うときの直し方](https://medorica.jp/column-ai-shinryojikan): 誤りの出どころの探し方と、公式サイト・Googleビジネスプロフィール・ポータルサイトを直す順番。
 - [AIに自院のことを聞く10の質問（セルフチェック）](https://medorica.jp/column-ai-selfcheck): ログアウトした状態で院名・地域・症状・条件の4つの型の質問をし、答えのどこを見るか、誤りを見つけたときに直す場所
 - [データ提出加算の提出期限](https://medorica.jp/column-data-teishutsu): 対象（施設基準）、様式7の10・7の11の提出先と令和8年度の期限、試行データの位置づけ、2026年度改定で新設された充実管理加算を公的資料をもとに整理
 - [査定・返戻は、どこで起きているのか](https://medorica.jp/column-sashou-henrei): 査定と返戻の違い、通知書の種類、主な原因、最初に確認することを公的資料をもとに整理
