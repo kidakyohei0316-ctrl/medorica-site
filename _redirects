@@ -1,0 +1,3 @@
+# 次回のFAX・郵送DMに印刷する短いURL（流入元を数えるため UTM 付きの着地ページへ転送）
+/fax  /geo-shindan?utm_source=fax&utm_medium=dm&utm_campaign=fax  302
+/dm   /geo-shindan?utm_source=post&utm_medium=dm&utm_campaign=post  302
